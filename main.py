@@ -2,7 +2,7 @@
 """
 File:          main.py
 Author:        Binit Shah
-Last Modified: Binit on 9/23
+Last Modified: Felipe on 9/23
 """
 
 import simulator
