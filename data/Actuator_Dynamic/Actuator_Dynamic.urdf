@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="Actuator_Dynamic">
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.11762 -0.0036938 0.064433"
+        rpy="0 0 0" />
+      <mass
+        value="0.0062598" />
+      <inertia
+        ixx="3.0895E-07"
+        ixy="-1.1323E-23"
+        ixz="-3.5591E-09"
+        iyy="6.1027E-07"
+        iyz="-5.3016E-23"
+        izz="6.632E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="piston_link">
+    <inertial>
+      <origin
+        xyz="-1.38777878078145E-17 1.73472347597681E-18 0.0222672906134215"
+        rpy="0 0 0" />
+      <mass
+        value="0.00159935733100685" />
+      <inertia
+        ixx="3.09753658356954E-07"
+        ixy="-9.98673690776072E-41"
+        ixz="-3.08087264957605E-25"
+        iyy="3.09753658356954E-07"
+        iyz="-2.79441405773464E-23"
+        izz="8.77902277106467E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="meshes/piston_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="meshes/piston_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="piston_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.096315 -0.064433 -0.0034875"
+      rpy="1.5708 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="piston_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.0054"
+      upper="0"
+      effort="0"
+      velocity="0" />
+    <dynamics
+      damping="2"
+      friction="1" />
+  </joint>
+
+</robot>
