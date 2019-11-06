@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 """
-File:          Pistons.py
+File:          pistons.py
 Author:        Felipe Castro
 Last Modified: Felipe Castro on 10/07
 """
 #Consider piston transient status
 
 from enum import Enum
+import pybullet as p
+
+from simulator.utilities import Utilities
 
 piston_state=Enum('pistonState', 'off on')
 
 class Pistons:
 	"""The Piston class turns the piston Arduino micro-controllers on/off and maintains the status of the pistons """
-	def __init__(self, piston_length: int):
+	def __init__(self, piston_length: int = 10):
 		""" Generates a default list of each piston's status, 'piston_list' of length 'piston_length', each element a piston.
 		If a piston is in the Nth column of the piston complex, then piston ID will be identified as so: [N]
 		For example, a piston in column 2 will be identified by the ID [2].
@@ -21,6 +24,7 @@ class Pistons:
 		:return string piston_list: default list of piston status' all off
 
 		"""
+		self.pistons = []
 		self.status_list = []
 		for i in range(piston_length):
 			self.status_list.append(piston_state.off)
@@ -62,6 +66,22 @@ class Pistons:
 
 		return print_list
 
+	def load_pistons_urdf(self, cwd):
+		"""Load 10 buttons into the environment
+
+		Have each button that we maintain add itself in the enviroment.
+		"""
+		for i in range(len(self.status_list)):
+			position = [0, 0, 1]
+			orientation = [0, 0, 0, 0]
+			print('hehyyyyyyyy')
+			piston = p.loadURDF(Utilities.gen_urdf_path("Actuator_Dynamic/Actuator_Dynamic.urdf", cwd),
+									 basePosition=position,
+									 baseOrientation=orientation,
+									 useFixedBase=True,
+									 globalScaling=3)
+
+			self.pistons.append(piston)
 
 
 

@@ -6,7 +6,7 @@ Last Modified:	Ammar on 9/26
 
 import unittest
 
-from simulator.Buttons import *
+from simulator.buttons import *
 
 
 class ButtonsTest(unittest.TestCase):

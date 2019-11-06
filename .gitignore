@@ -2,3 +2,5 @@ __pycache__/
 pythonvenv/
 .vs/
 .vscode/
+.idea
+Pipfile*

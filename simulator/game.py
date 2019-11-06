@@ -10,6 +10,7 @@ import pybullet as p
 
 from simulator.field import Field
 from simulator.racecar_agent import RacecarAgent
+from simulator.pistons import Pistons
 
 
 class Game:
@@ -35,6 +36,7 @@ class Game:
 
         self.agent = RacecarAgent()
         self.field = Field()
+        self.pistons = Pistons()
 
     def load_statics(self):
         """Loading the static objects
@@ -47,6 +49,7 @@ class Game:
         Including the button robot and the mobile block stacking robot.
         """
         self.agent.load_racecar_urdf(self.cwd)
+        self.pistons.load_pistons_urdf(self.cwd)
 
     def load_ui(self):
         """Loading the UI components
